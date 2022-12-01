@@ -2,6 +2,7 @@
 
 
 #include "MyActor.h"
+#include "Temp.h"
 
 // Sets default values
 AMyActor::AMyActor()
@@ -27,6 +28,9 @@ AMyActor::AMyActor()
 void AMyActor::BeginPlay()
 {
 	Super::BeginPlay();
+
+	UE_LOG(LogTemp, Log, TEXT("Begin Play!!!!! %d"), 55);
+	UE_LOG(TEST_LOG, Log, TEXT("Begin Play!!!!! %d"), 55);
 	
 }
 
@@ -35,5 +39,7 @@ void AMyActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	//UE_LOG(LogTemp, Error, TEXT("Tick %f"), DeltaTime);
+	AddActorLocalRotation(FRotator(RotateSpeed * DeltaTime, 0.f, 0.f));
 }
 
